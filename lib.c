@@ -110,12 +110,12 @@ float matrixDeterminant(matrixOptional *matrix1)
 {
   float *temp;
   float EPS = 0.0000001;
-  int n;
+  int numberOfRows;
   float det = 1;
-  n = matrix1->rows;
-  for (int i=0; i<n; ++i) {
+  numberOfRows = matrix1->rows;
+  for (int i=0; i<numberOfRows; ++i) {
     int k = i;
-    for (int j=i+1; j<n; ++j)
+    for (int j=i+1; j<numberOfRows; ++j)
         if (abs (matrix1->matrix[j][i]) > abs (matrix1->matrix[k][i]))
             k = j;
     if (abs (matrix1->matrix[k][i]) < EPS)
@@ -129,11 +129,11 @@ float matrixDeterminant(matrixOptional *matrix1)
     if (i != k)
         det = -det;
     det *= (matrix1->matrix[i][i]);
-    for (int j=i+1; j<n; ++j)
+    for (int j=i+1; j<numberOfRows; ++j)
       (matrix1->matrix[i][j]) /= (matrix1->matrix[i][i]);
-    for (int j=0; j<n; ++j)
+    for (int j=0; j<numberOfRows; ++j)
       if ((j != i) && abs (matrix1->matrix[j][i]) > EPS)
-            for (int k=i+1; k<n; ++k)
+            for (int k=i+1; k<numberOfRows; ++k)
 	      (matrix1->matrix[j][k]) -= (matrix1->matrix[i][k]) * (matrix1->matrix[j][i]);
   }
   return det;

@@ -7,7 +7,7 @@ typedef struct
     float **matrix;
     int rows;
     int columns;
-} matrixOptional;
+} matrixOptional; /*structure, that contains numbers of rows and columns of certain matrix, and a pointer to that matrix*/
 
 matrixOptional *memoryAllocation(int row, int column);
 
